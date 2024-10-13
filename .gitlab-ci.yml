@@ -1,0 +1,40 @@
+stages:
+  - install
+  - lint
+  - format
+  - test
+  - build
+
+variables:
+  CI: "true"  # Setting environment variable for Jest CI
+
+before_script:
+  - npm install  # Install dependencies for every job
+
+install:
+  stage: install
+  script:
+    - echo "Dependencies installed"
+
+lint:
+  stage: lint
+  script:
+    - npm run lint  # Run ESLint to check code quality
+
+format:
+  stage: format
+  script:
+    - npm run prettier  # Run Prettier for code formatting
+
+test:
+  stage: test
+  script:
+    - npm run test  # Run tests using Jest with CI=true
+
+build:
+  stage: build
+  script:
+    - npm run build  # Run the build process
+
+only:
+  - merge_requests  # Only trigger the pipeline for pull requests

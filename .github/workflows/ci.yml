@@ -27,7 +27,7 @@ jobs:
 
     - name: Run Prettier
       if: always()
-      run: npm run prettier
+      run: npm run prettier --write
 
     - name: Run Jest tests
       if: always()

@@ -18,16 +18,7 @@ jobs:
       with:
         node-version: '16'
 
-    - name: Run ESLint
-      run: npm run lint
-
-    - name: Run Prettier
-      run: npm run prettier
-
-    - name: Run Jest tests
-      run: CI=true npm run test
-
-    - name: Install dependencies
+    - name: Update dependencies
       working-directory: ./codebase/rdicidr-0.1.0
       run: |
         npm update --legacy-peer-deps
@@ -37,6 +28,15 @@ jobs:
       working-directory: ./codebase/rdicidr-0.1.0
       run: |
         npm install
+
+    - name: Run ESLint
+      run: npm run lint
+
+    - name: Run Prettier
+      run: npm run prettier
+
+    - name: Run Jest tests
+      run: CI=true npm run test
 
     - name: Build the application
       run: npm run build

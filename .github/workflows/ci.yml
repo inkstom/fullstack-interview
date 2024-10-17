@@ -13,6 +13,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
     - name: Run ESLint
       run: npm run lint
 
@@ -21,11 +26,6 @@ jobs:
 
     - name: Run Jest tests
       run: CI=true npm run test
-      
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
 
     - name: Install dependencies
       working-directory: ./codebase/rdicidr-0.1.0

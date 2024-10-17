@@ -13,6 +13,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - name: Run ESLint
+      run: npm run lint
+
+    - name: Run Prettier
+      run: npm run prettier
+
+    - name: Run Jest tests
+      run: CI=true npm run test
+      
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -28,15 +37,6 @@ jobs:
       working-directory: ./codebase/rdicidr-0.1.0
       run: |
         npm install
-
-    - name: Run ESLint
-      run: npm run lint
-
-    - name: Run Prettier
-      run: npm run prettier
-
-    - name: Run Jest tests
-      run: CI=true npm run test
 
     - name: Build the application
       run: npm run build

@@ -1,2 +1,0 @@
-# fullstack-interview
-fullstack-interview

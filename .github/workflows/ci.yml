@@ -21,9 +21,13 @@ jobs:
     - name: Install dependencies
       working-directory: ./codebase/rdicidr-0.1.0
       run: |
-        npm install
         npm update --legacy-peer-deps
         npm install @babel/core
+        
+    - name: Install dependencies
+      working-directory: ./codebase/rdicidr-0.1.0
+      run: |
+        npm install
 
     - name: Run ESLint
       run: npm run lint

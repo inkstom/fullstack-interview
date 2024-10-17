@@ -19,18 +19,20 @@ jobs:
         node-version: '16'
 
     - name: Install dependencies
-      run: |
-        npm install
-        npm update --legacy-peer-deps
-        npm install @babel/core
+      run: npm install
 
     - name: Run ESLint
+      if: always()
       run: npm run lint
 
     - name: Run Prettier
-      run: npm run prettier
+      if: always()
+      run: |
+        yarn
+        npm run prettier --write
 
     - name: Run Jest tests
+      if: always()
       run: CI=true npm run test
 
     - name: Build the application

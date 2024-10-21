@@ -12,7 +12,6 @@ defaults:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -22,11 +21,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '15.5.1'
+          node-version: "15.5.1"
 
       - name: Install dependencies
         run: npm install
-        
+
       - name: Install dependencies
         run: npm run lint
 

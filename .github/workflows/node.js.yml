@@ -12,20 +12,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js 15.5.1
-        uses: actions/setup-node@v4
-        with:
-          node-version: 15.5.1
-          cache: "npm"
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - run: npm install
-        working-directory: ./codebase/rdicidr-0.1.0
-      - run: npm run lint
-        working-directory: ./codebase/rdicidr-0.1.0
-      - run: npm run prettier
-        working-directory: ./codebase/rdicidr-0.1.0
-      - run: CI=true npm run test
-        working-directory: ./codebase/rdicidr-0.1.0
-      - run: npm run build 
-        working-directory: ./codebase/rdicidr-0.1.0
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Prettier
+        run: npm run prettier
+
+      - name: Run Jest tests
+        run: CI=true npm run test
+
+      - name: Build the application
+        run: npm run build

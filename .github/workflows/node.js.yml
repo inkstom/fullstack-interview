@@ -5,9 +5,14 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ $default-branch ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ $default-branch ]
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./codebase/rdicidr-0.1.0
 
 jobs:
   build:
@@ -21,6 +26,14 @@ jobs:
       with:
         node-version: 15.5.1
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+            
+    - name: Install dependencies npm install
+      run: npm install
+    - name: Linter (ESLint) npm run lint
+      run: npm run lint
+    - name: Formatter (Prettier) npm run prettier
+      run: npm run prettier
+    - name: Test (Jest) CI=true npm run test
+      run: CI=true npm run test
+    - name: Build npm run build
+      run: npm run build --if-present

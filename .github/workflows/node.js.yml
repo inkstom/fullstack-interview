@@ -20,7 +20,12 @@ jobs:
           cache: "npm"
 
       - run: npm install
+        working-directory: ./codebase/rdicidr-0.1.0
       - run: npm run lint
+        working-directory: ./codebase/rdicidr-0.1.0
       - run: npm run prettier
+        working-directory: ./codebase/rdicidr-0.1.0
       - run: CI=true npm run test
+        working-directory: ./codebase/rdicidr-0.1.0
       - run: npm run build 
+        working-directory: ./codebase/rdicidr-0.1.0

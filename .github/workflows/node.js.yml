@@ -2,7 +2,6 @@ name: Node.js CI
 
 on: [push, pull_request]
 
-
 defaults:
   run:
     shell: bash
@@ -10,19 +9,18 @@ defaults:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js 15.5.1
-      uses: actions/setup-node@v4
-      with:
-        node-version: 15.5.1
-        cache: 'npm'
-            
-    - run: npm install
-    - run: npm run lint
-    - run: npm run prettier
-    - run: CI=true npm run test
-    - run: npm run build --if-present
+      - uses: actions/checkout@v4
+      - name: Use Node.js 15.5.1
+        uses: actions/setup-node@v4
+        with:
+          node-version: 15.5.1
+          cache: "npm"
+
+      - run: npm install
+      - run: npm run lint
+      - run: npm run prettier
+      - run: CI=true npm run test
+      - run: npm run build 
